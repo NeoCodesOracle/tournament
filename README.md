@@ -1,4 +1,4 @@
-Swiss Tournament Application
+##Swiss Tournament Application
 
 This application is an assignment for the course Intro to Relational Databases, part of Udacity's Full Stack Nanodegree Program. It is an application that helps manage Swiss style tournaments. The objective was to write a program using Python in conjuction with PSQL that would pass all tests found in the file tournament_test.py.
 
