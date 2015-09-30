@@ -5,7 +5,7 @@ This application is an assignment for the course Intro to Relational Databases, 
 Installation
 ------------
 
-###Requirements
+####Requirements
 1. Git
 2. Virtual Box
 3. Vagrant
@@ -49,27 +49,25 @@ After executing the last command above, enter the following command: python tour
 
 File Contents
 -------------
-tournament.py Main python file that runs the Swiss tournament
-tournament.sql File that stores database schemas for tournament
-tournament_test.py Udacity's Python test file
+1. **tournament.py**
+    Main python file that runs the Swiss tournament
+2. **tournament.sql**
+    File that stores database schemas for tournament
+3. **tournament_test.py**
+    Udacity's Python test file
 
-tournament.py function | Description
------------------------|-------------
+Function Descriptions
+---------------------
 
-Connect       | Meant to connect to the database. Already set up for you.
---------------|----------------------------------------------------------
-deleteMatches | Remove all the matches records from the database.
---------------|----------------------------------------------------
-deletePlayers | Remove all the player records from the database.
---------------|----------------------------------------------------
-countPlayers  | Returns the number of players currently registered
---------------|----------------------------------------------------
-registerPlayer| Adds a player to the tournament database.
---------------|----------------------------------------------------
-playerStandings | Returns a list of the players and their win 
-                  records, sorted by wins. 
-reportMatch | This is to simply populate the matches table and record the winner and loser as (winner,loser) in the insert statement.
-swissPairings | Returns a list of pairs of players for the next round of a match. Here all we are doing is the pairing of alternate players from the player standings table, zipping them up and appending them to a list with values: (id1, name1, id2, name2)
+Connect         | Meant to connect to the database. Already set up for you.
+----------------|----------------------------------------------------------
+deleteMatches   | Remove all the matches records from the database.
+deletePlayers   | Remove all the player records from the database.
+countPlayers    | Returns the number of players currently registered
+registerPlayer  | Adds a player to the tournament database.
+playerStandings | Returns a list of the players and their win records, sorted by wins. 
+reportMatch     | This is to simply populate the matches table and record the winner and loser as (winner,loser) in the insert statement.
+swissPairings   | Returns a list of pairs of players for the next round of a match. Here all we are doing is the pairing of alternate players from the player standings table, zipping them up and appending them to a list with values: (id1, name1, id2, name2)
 
 
 Credits
