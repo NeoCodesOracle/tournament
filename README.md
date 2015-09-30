@@ -6,9 +6,9 @@ Installation
 ------------
 
 #### Requirements
-1. Git
-2. Virtual Box
-3. Vagrant
+1. Git (if you don't already have Git, [download from here](http://git-scm.com/downloads))
+2. Virtual Box (if you don't already have Virtual Box, [download from here](https://www.virtualbox.org/wiki/Downloads))
+3. Vagrant (if you don't already have Vagrant, [download from here](https://www.vagrantup.com/downloads))
 
 #### Setup
 
@@ -21,15 +21,12 @@ Use any terminal program of your choosing
 Example: `cd Desktop/my_directory`
 3. Clone VM Configuration
 From Git, enter the following command:      
->git clone http://github.com/udacity/fullstack-nanodegree-vm fullstack 
+`git clone http://github.com/udacity/fullstack-nanodegree-vm fullstack`    
 this will create a new directory named fullstack, a clone of Udacity's repository for this assignment which holds all of the configuration files needed to run this application.
-
 4. Move to the vagrant folder by entering: `cd fullstack/vagrant/`
-
 5. Clone Project: From Git, clone this project by entering the following command:
->git clone https://github.com/NeoCodesOracle/tournament.git
+`git clone https://github.com/NeoCodesOracle/tournament.git`    
 This will create a directory inside the vagrant directory named tournament.
-
 6. Run Vagrant 
 At the prompt type: `vagrant up`
 
@@ -51,12 +48,9 @@ After executing the last command above, enter the following command: python tour
 
 File Contents
 -------------
-1. **tournament.py**
-    Main python file that runs the Swiss tournament
-2. **tournament.sql**
-    File that stores database schemas for tournament
-3. **tournament_test.py**
-    Udacity's Python test file
+1. **tournament.py**      - Main python file that runs the Swiss tournament
+2. **tournament.sql**     - File that stores database schemas for tournament
+3. **tournament_test.py** - Udacity's Python test file
 
 Function Descriptions
 ---------------------
@@ -79,11 +73,10 @@ Created by NeoCodesOracle
 
 License
 -------
-Licensed under the MIT License (MIT)
+Licensed under MIT License (MIT)
 
-`Copyright (c) [2015] [NeoCodesOracle]
+Copyright (c) [2015] [NeoCodesOracle](https://github.com/NeoCodesOracle)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+    Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS ORIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`
+    The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS ORIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
