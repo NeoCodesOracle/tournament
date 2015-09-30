@@ -13,10 +13,10 @@ Installation
 #### Setup
 
 1. Open terminal:
-* Windows: 
-Open Git Bash, which installed at the time you installed Git. This will open a Unix-style terminal.
-* Other systems: 
-Use any terminal program of your choosing
+    * Windows: 
+    Open Git Bash, which installed at the time you installed Git. This will open a Unix-style terminal.
+    * Other systems: 
+    Use any terminal program of your choosing
 2. Change from your root directory to the directory of your choice.   
 Example: `cd Desktop/my_directory`
 3. Clone VM Configuration
