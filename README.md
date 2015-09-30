@@ -24,7 +24,7 @@ From Git, enter the following command:
 `git clone http://github.com/udacity/fullstack-nanodegree-vm fullstack`    
 this will create a new directory named fullstack, a clone of Udacity's repository for this assignment which holds all of the configuration files needed to run this application.
 4. Move to the vagrant folder by entering: `cd fullstack/vagrant/`
-5. Clone Project: From Git, clone this project by entering the following command:
+5. Clone Project: From Git, clone this project by entering the following command:           
 `git clone https://github.com/NeoCodesOracle/tournament.git`          
 This will create a directory inside the vagrant directory named tournament.
 6. Run Vagrant 
