@@ -44,7 +44,7 @@ After completing all installation steps you are ready to connect to Vagrant box.
 Running Udacity's Test File
 ---------------------------
 
-After executing the last command above, enter the following command: python tournament_test.py. This command will test against the file provided by Udacity to ensure all criteria is met.
+After executing the last command above, enter the following command: `python tournament_test.py`. This command will test against the file provided by Udacity to ensure all criteria is met.
 
 File Contents
 -------------
