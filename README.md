@@ -13,36 +13,36 @@ Installation
 #### Setup
 
 1. Open terminal:
-   * Windows: 
-        Open Git Bash, which installed at the time you installed Git. This will open a Unix-style terminal.
-   * Other systems: 
-        Use any terminal program of your choosing
+  * Windows: 
+  Open Git Bash, which installed at the time you installed Git. This will open a Unix-style terminal.
+  * Other systems: 
+  Use any terminal program of your choosing
 2. Change from your root directory to the directory of your choice.   
   Example: `cd Desktop/my_directory`
 3. Clone VM Configuration
-    From Git, enter the following command:
-    `git clone http://github.com/udacity/fullstack-nanodegree-vm fullstack`, 
-    this will create a new directory named fullstack, a clone of Udacity's repository for this assignment which holds all of the configuration files needed to run this application.
+  From Git, enter the following command:
+    `git clone http://github.com/udacity/fullstack-nanodegree-vm fullstack`
+  this will create a new directory named fullstack, a clone of Udacity's repository for this assignment which holds all of the configuration files needed to run this application.
 
-4. Move to the vagrant folder by entering: cd fullstack/vagrant/
+4. Move to the vagrant folder by entering: `cd fullstack/vagrant/`
 
 5. Clone Project: From Git, clone this project by entering the following command:
-    `git clone https://github.com/NeoCodesOracle/tournament.git'
-    This will create a directory inside the vagrant directory named tournament.
+  `git clone https://github.com/NeoCodesOracle/tournament.git'
+  This will create a directory inside the vagrant directory named tournament.
 
 6. Run Vagrant 
-    At the prompt type: vagrant up
+    At the prompt type: `vagrant up`
 
 Usage
 -----
 
 After completing all installation steps you are ready to connect to Vagrant box. Connect by following these steps:
 
-1. At the pormpt enter the follwoing command: vagrant ssh
-2. Move to tournament directory by entering: cd /vagrant/tournament/
-3. Log in to psql by typing this command at the prompt: psql
-4. Next you need to initialize the database. Type \i tournament.sql , which will import the commands fournd in our file that contains the database schema for this application. Simply run this command anytime you want to 'reset' the tournament.
-5. Exit psql by typing the command \q
+1. At the pormpt enter the follwoing command: `vagrant ssh`
+2. Move to tournament directory by entering: `cd /vagrant/tournament/`
+3. Log in to psql by typing this command at the prompt: `psql`
+4. Next you need to initialize the database. Type `\i tournament.sql` , which will import the commands fournd in our file that contains the database schema for this application. Simply run this command anytime you want to 'reset' the tournament.
+5. Exit psql by typing the command `\q`
 
 Running Udacity's Test File
 ---------------------------
