@@ -122,6 +122,7 @@ def swissPairings():
         name2: the second player's name
     """
     pairings = [] 
+    total_players = countPlayers()
 
     db, cursor = connect()
     # Find registered players and sort by most wins descending
@@ -131,6 +132,10 @@ def swissPairings():
     cursor.execute(query)
     players = cursor.fetchall()
     # Next we pair adjacent players in standings
-    pairings = [(players[i-1] + players[i])
-                for i in range(1, len(players), 2)]
+    if total_players % 2 == 0:
+        pairings = [(players[i-1] + players[i])
+                    for i in range(1, len(players), 2)]
+    else:
+        raise "Uneven number of players."
+
     return pairings
