@@ -14,14 +14,14 @@ CREATE DATABASE tournament;
 \c tournament
 
 -- Keep track of all newly registered players
-create table players(
+CREATE TABLE players(
 	name text,
 	wins integer,
 	matches integer,
 	id serial primary key	);
 
 -- Let's keep track of played matches
-create table matches(
+CREATE TABLE matches(
 	winners INT REFERENCES players(id),
 	losers INT REFERENCES players(id),
 	match_id serial primary key,
