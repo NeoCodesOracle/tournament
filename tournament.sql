@@ -6,11 +6,21 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
--- Avoid retyping sql commarnds by inserting them here
--- Create database "tournament" and connect to that database before creating tables
+-- Automate tedious commands at the prompt
+
+-- Disconnect active users 
+SELECT pg_terminate_backend(pg_stat_activity.pid)
+FROM pg_stat_activity
+WHERE pg_stat_activity.datname = 'tournament'
+AND pid <> pg_backend_pid();
+
+-- Disconnect ourselves by connecting to another database
 \c vagrant
+-- Remove any previously created database with same name
 DROP DATABASE IF EXISTS tournament;
+-- New database with 0 entries
 CREATE DATABASE tournament;
+-- Connect to it
 \c tournament
 
 -- Keep track of all newly registered players
