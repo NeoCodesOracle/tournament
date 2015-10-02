@@ -22,8 +22,9 @@ create table players(
 
 -- Let's keep track of played matches
 create table matches(
-	winners integer,
-	losers integer,
-	match_id serial primary key );	
+	winners INT REFERENCES players(id),
+	losers INT REFERENCES players(id),
+	match_id serial primary key,
+	CHECK (winners <> losers) );	
 
 	
