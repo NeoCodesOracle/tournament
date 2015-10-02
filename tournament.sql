@@ -15,8 +15,10 @@ CREATE DATABASE tournament;
 
 -- Keep track of all newly registered players
 create table players(
-	id serial primary key,
-	name text );
+	name text,
+	wins integer,
+	matches integer,
+	id serial primary key	);
 
 -- Let's keep track of played matches
 create table matches(
@@ -24,9 +26,4 @@ create table matches(
 	losers integer,
 	match_id serial primary key );	
 
--- Let's keep track of player stats
-create table scorecard(
-	player_id integer,
-	player_name text,
-	wins integer,
-	matches integer	);
+	

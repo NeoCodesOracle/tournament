@@ -15,7 +15,6 @@ def connect():
 
 def deleteMatches():
     """Remove all the match records from the database."""
-
     DB = connect()
     c = DB.cursor()
     c.execute("DELETE FROM matches")
@@ -25,7 +24,6 @@ def deleteMatches():
 
 def deletePlayers():
     """Remove all the player records from the database."""
-
     DB = connect()
     c = DB.cursor()
     c.execute("DELETE FROM players")
@@ -35,7 +33,6 @@ def deletePlayers():
 
 def countPlayers():
     """Returns the number of players currently registered."""
-
     DB = connect()
     c = DB.cursor()
     sql_query = "SELECT count(name) AS num FROM players"
@@ -56,13 +53,13 @@ def registerPlayer(name):
     DB = connect()
     c = DB.cursor()
     # Register new player and return his/her id
-    player = "INSERT INTO players (name) VALUES (%s) RETURNING id"
+    player = "INSERT INTO players (name, matches, wins) VALUES (%s,%s,%s) RETURNING id"
     # All newly registered players must appear in score card
-    standings = "INSERT INTO scorecard (player_id, player_name, wins, matches) \
-                 VALUES (%s,%s,%s,%s)"
-    c.execute(player, (name,))
+    #standings = "INSERT INTO scorecard (player_id, player_name, wins, matches) \
+    #             VALUES (%s,%s,%s,%s)"
+    c.execute(player, (name,0,0))
     playerid = c.fetchone()[0]
-    c.execute(standings, (playerid, name, 0, 0))
+    #c.execute(standings, (playerid, name, 0, 0))
     DB.commit()
     DB.close()
 
@@ -80,15 +77,13 @@ def playerStandings():
         wins: the number of matches the player has won
         matches: the number of matches the player has played
     """
-
     standings = []  # list for storing player standings
 
     DB = connect()
     c = DB.cursor()
-    players = "SELECT player_id, player_name, wins, matches \
-        FROM scorecard, players \
-        WHERE scorecard.player_id = players.id \
-        ORDER BY wins,matches"
+    players = "SELECT id, name, wins, matches \
+        FROM players \
+        ORDER BY wins,matches DESC"
     c.execute(players)
     for row in c.fetchall():
         standings.append(row)
@@ -106,12 +101,12 @@ def reportMatch(winner, loser):
     DB = connect()
     c = DB.cursor()
     match_results = "INSERT INTO matches VALUES (%s,%s)"
-    winner_update = "UPDATE scorecard \
+    winner_update = "UPDATE players \
                      SET matches = matches+1, wins = wins+1 \
-                     WHERE player_id = %s;"
-    loser_update = "UPDATE scorecard \
+                     WHERE id = %s;"
+    loser_update = "UPDATE players \
                     SET matches = matches+1 \
-                    WHERE player_id = %s"
+                    WHERE id = %s"
     c.execute(match_results, (winner, loser))
     c.execute(winner_update, (winner,))
     c.execute(loser_update, (loser,))
@@ -134,15 +129,13 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
-
     pairings = []  # list that will store pairings
 
     DB = connect()
     c = DB.cursor()
     # Find registered players and sort by most wins descending
-    standings = "SELECT player_id, player_name \
-        FROM scorecard, players \
-        WHERE scorecard.player_id = players.id \
+    standings = "SELECT id, name \
+        FROM players \
         ORDER BY wins,matches"
     c.execute(standings)
     players = c.fetchall()
