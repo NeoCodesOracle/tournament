@@ -52,10 +52,8 @@ def registerPlayer(name):
       name: the player's full name (need not be unique).
     """
     db, cursor = connect()
-    # Register new player and return his/her id
-    player = "INSERT INTO players (name, matches, wins) VALUES (%s,%s,%s) RETURNING id"
+    player = "INSERT INTO players (name, matches, wins) VALUES (%s,%s,%s)"
     cursor.execute(player, (name,0,0))
-    playerid = cursor.fetchone()[0]
     db.commit()
     db.close()
 
