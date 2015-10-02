@@ -7,38 +7,39 @@ import psycopg2
 import bleach
 
 
-def connect():
-    """Connect to the PostgreSQL database. Returns a database connection."""
-
-    return psycopg2.connect("dbname=tournament")
+def connect(database_name="tournament"):
+    """Connect to tournament database and return connection and cursor"""
+    try:
+        db = psycopg2.connect("dbname={}".format(database_name))
+        cursor = db.cursor()
+        return db, cursor
+    except:
+        print("<error message>")
 
 
 def deleteMatches():
     """Remove all the match records from the database."""
-    DB = connect()
-    c = DB.cursor()
-    c.execute("DELETE FROM matches")
-    DB.commit()
-    DB.close()
+    db, cursor = connect()
+    cursor.execute("DELETE FROM matches")
+    db.commit()
+    db.close()
 
 
 def deletePlayers():
     """Remove all the player records from the database."""
-    DB = connect()
-    c = DB.cursor()
-    c.execute("DELETE FROM players")
-    DB.commit()
-    DB.close()
+    db, cursor = connect()
+    cursor.execute("DELETE FROM players")
+    db.commit()
+    db.close()
 
 
 def countPlayers():
     """Returns the number of players currently registered."""
-    DB = connect()
-    c = DB.cursor()
+    db, cursor = connect()
     sql_query = "SELECT count(name) AS num FROM players"
-    c.execute(sql_query)
-    players = c.fetchone()[0]
-    DB.close()
+    cursor.execute(sql_query)
+    players = cursor.fetchone()[0]
+    db.close()
     return players
 
 
@@ -50,18 +51,13 @@ def registerPlayer(name):
     Args:
       name: the player's full name (need not be unique).
     """
-    DB = connect()
-    c = DB.cursor()
+    db, cursor = connect()
     # Register new player and return his/her id
     player = "INSERT INTO players (name, matches, wins) VALUES (%s,%s,%s) RETURNING id"
-    # All newly registered players must appear in score card
-    #standings = "INSERT INTO scorecard (player_id, player_name, wins, matches) \
-    #             VALUES (%s,%s,%s,%s)"
-    c.execute(player, (name,0,0))
-    playerid = c.fetchone()[0]
-    #c.execute(standings, (playerid, name, 0, 0))
-    DB.commit()
-    DB.close()
+    cursor.execute(player, (name,0,0))
+    playerid = cursor.fetchone()[0]
+    db.commit()
+    db.close()
 
 
 def playerStandings():
@@ -79,15 +75,14 @@ def playerStandings():
     """
     standings = []  # list for storing player standings
 
-    DB = connect()
-    c = DB.cursor()
+    db, cursor = connect()
     players = "SELECT id, name, wins, matches \
         FROM players \
         ORDER BY wins,matches DESC"
-    c.execute(players)
-    for row in c.fetchall():
+    cursor.execute(players)
+    for row in cursor.fetchall():
         standings.append(row)
-    DB.close()
+    db.close()
     return standings
 
 
@@ -98,8 +93,7 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
-    DB = connect()
-    c = DB.cursor()
+    db, cursor = connect()
     match_results = "INSERT INTO matches VALUES (%s,%s)"
     winner_update = "UPDATE players \
                      SET matches = matches+1, wins = wins+1 \
@@ -107,11 +101,11 @@ def reportMatch(winner, loser):
     loser_update = "UPDATE players \
                     SET matches = matches+1 \
                     WHERE id = %s"
-    c.execute(match_results, (winner, loser))
-    c.execute(winner_update, (winner,))
-    c.execute(loser_update, (loser,))
-    DB.commit()
-    DB.close()
+    cursor.execute(match_results, (winner, loser))
+    cursor.execute(winner_update, (winner,))
+    cursor.execute(loser_update, (loser,))
+    db.commit()
+    db.close()
 
 
 def swissPairings():
@@ -131,14 +125,13 @@ def swissPairings():
     """
     pairings = []  # list that will store pairings
 
-    DB = connect()
-    c = DB.cursor()
+    db, cursor = connect()
     # Find registered players and sort by most wins descending
     standings = "SELECT id, name \
         FROM players \
         ORDER BY wins,matches"
-    c.execute(standings)
-    players = c.fetchall()
+    cursor.execute(standings)
+    players = cursor.fetchall()
     # Next we pair adjacent players in standings
     pairings = [(players[i-1] + players[i])
                 for i in range(1, len(players), 2)]
