@@ -123,14 +123,14 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
-    pairings = []  # list that will store pairings
+    pairings = [] 
 
     db, cursor = connect()
     # Find registered players and sort by most wins descending
-    standings = "SELECT id, name \
+    query = "SELECT id, name \
         FROM players \
         ORDER BY wins,matches"
-    cursor.execute(standings)
+    cursor.execute(query)
     players = cursor.fetchall()
     # Next we pair adjacent players in standings
     pairings = [(players[i-1] + players[i])
