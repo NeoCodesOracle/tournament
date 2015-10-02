@@ -9,6 +9,7 @@ Installation
 1. Git (if you don't already have Git, [download from here](http://git-scm.com/downloads))
 2. Virtual Box (if you don't already have Virtual Box, [download from here](https://www.virtualbox.org/wiki/Downloads))
 3. Vagrant (if you don't already have Vagrant, [download from here](https://www.vagrantup.com/downloads))
+4. Python 2.7.6
 
 #### Setup
 
